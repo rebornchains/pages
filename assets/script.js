@@ -41,3 +41,14 @@ copyButton.addEventListener('click', async () => {
     status.textContent = 'Copy is unavailable in this browser. Select and copy the checklist text above manually.';
   }
 });
+
+const rotationToggle = document.querySelector(".rotation-toggle");
+if (rotationToggle) {
+  rotationToggle.hidden = false;
+  rotationToggle.addEventListener("click", () => {
+    const paused = rotationToggle.getAttribute("aria-pressed") !== "true";
+    rotationToggle.setAttribute("aria-pressed", String(paused));
+    rotationToggle.textContent = paused ? "Resume rotation" : "Pause rotation";
+    document.querySelector(".hero-art").classList.toggle("phoenix-paused", paused);
+  });
+}
